@@ -2,19 +2,19 @@ import { CSSProperties } from "react"
 import timeZones from "../time-zones/time-zones";
 type Props = {
     date: Date;
-    city: string;
+    place: string;
 }
-export const Clock: React.FC<Props> = ({ date, city }) => {
+export const Clock: React.FC<Props> = ({ date, place }) => {
     const style: CSSProperties = { display: "flex", flexDirection: "column", alignItems: "center", fontFamily: "cursive", fontSize: 22 };
     const currentLocation = date.toString().substring(35, 42);
 
-    const timeZone: string | undefined = timeZones.find(timeZone => JSON.stringify(timeZone).includes(city))?.name;
+    const timeZone: string | undefined = timeZones.find(timeZone => JSON.stringify(timeZone).includes(place))?.name;
     const time = date.toLocaleTimeString("en-US", { timeZone });
     console.log(timeZone);
 
     return <div style={style}>
         <header>
-            Time in {timeZone ? city : currentLocation}
+            Time in {timeZone ? place : currentLocation}
         </header>
         <p>{time}</p>
     </div>
