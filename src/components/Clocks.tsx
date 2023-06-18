@@ -13,11 +13,9 @@ const Clocks: React.FC = () => {
     }, []);
 
     return <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", marginTop: 50}}>
-        {/* //${places.map((place) => `<Clock date=${date} city=${place} />`} */}
-        <Clock date={date} place={places[0]} />
-        <Clock date={date} place={places[1]} />
-        <Clock date={date} place={places[2]} />
-        <Clock date={date} place={places[3]} />
+        {places.map((place, index) => 
+            <Clock key={index} date={date} place={place} />
+        )}
     </div>
 }
 export default Clocks;
